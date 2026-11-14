@@ -1,4 +1,21 @@
-const teacherTrukuPhrases = {};
+const teacherTrukuPhrases = Object.fromEntries([
+  [453746, "Embiyax namu kana? prajing ta da!", 27383],
+  [453747, "Hiyug! thmuku!", 27383],
+  [453748, "Embiyax su, mtgsa!", 27383],
+  [453749, "Tluung!", 27383],
+  [453751, "Mkla su qmbahang ka kari mu hug?", 27383],
+  [453752, "Mtgsa,ini ku kla.rngaw pxal duri hug?", 27383],
+  [453754, "Qita hini, purug knan spug ha.", null],
+  [453765, "Siyuki ta ssrus su hug?", 27383],
+  [453882, "Smhungi ku madas hndayu da.", 27387],
+  [453883, "Seupu ta mkan hndayu mu da!", 27387],
+].map(([id, indigenous, lesson]) => [id, {
+  indigenous,
+  ...(lesson ? {
+    url: `https://web.klokah.tw/text/read.php?tid=${lesson}`,
+    file: `truku-release/${id}.flac`,
+  } : { chinese: '請看這裡，跟著我一起唸。', file: 'truku-release/453754.flac' }),
+}]));
 
 const teacherPractice = {
   city: [
@@ -54,12 +71,13 @@ function careerPracticeView(index) {
       <button type="button" class="match-listen" data-action="${mandarinMode ? 'mandarin-lesson-audio' : 'truku-audio'}" data-value="${option}" aria-label="播放這句" aria-describedby="teacher-phrase-${option}">▶</button></div>`;
   }).join('');
   const phrases = practice.review.map(id => mandarinMode ? mandarinPhraseBank[id][0] : careerPracticePhrase(id).indigenous);
+  const translations = mandarinMode ? [] : practice.review.map((id, i) => careerPracticePhrase(id).chinese ?? practice.translations?.[i]);
   const links = mandarinMode ? [] : [...new Set([...practice.review, practice.audio, practice.replyAudio].filter(Boolean)
-    .map(id => careerPracticePhrase(id).url))];
+    .map(id => careerPracticePhrase(id).url).filter(Boolean))];
   return `<section class="panel teacher-practice">
     <h2>${storyCopy(practice.title)}</h2>
     ${completed ? `<div class="feedback" tabindex="-1" role="status"><p>${storyCopy(practice.result)}</p>
-      ${phrases.length ? `<ol class="teacher-review">${phrases.map((phrase, i) => `<li><span lang="${mandarinMode ? 'zh-Hant' : 'trv'}">${phrase}</span>${!mandarinMode && practice.translations?.[i] ? `<br><span>${practice.translations[i]}</span>` : ''}</li>`).join('')}</ol>` : ''}
+      ${phrases.length ? `<ol class="teacher-review">${phrases.map((phrase, i) => `<li><span lang="${mandarinMode ? 'zh-Hant' : 'trv'}">${phrase}</span>${translations[i] ? `<br><span>${translations[i]}</span>` : ''}</li>`).join('')}</ol>` : ''}
       ${phrases.length ? button(phrases.length > 1 ? '▶ 依序重聽' : '▶ 重聽這句', 'career-practice-replay', index) : ''}</div>`
       : `<p>${storyCopy(practice.prompt)}</p>
         <div class="actions">${practice.audio ? audio(practice.audio, practice.replyAudio ? (practice.audioLabels?.[0] ?? '▶ 聽問句') : '▶ 聽這句') : ''}
@@ -90,9 +108,9 @@ function teacherDialogueView() {
   const order = completed ? [0, 1, 2] : state?.dialogue ?? [];
   const card = (choice, placed) => {
     const { id, speaker, portrait } = teacherDialogue[choice];
-    const phrase = careerPracticePhrase(id).indigenous;
+    const { indigenous: phrase, chinese } = careerPracticePhrase(id);
     return `<div class="match-card dialogue-card${placed ? ' matched' : ''}">
-      ${placed ? `<div class="dialogue-line">${icon(portrait)}<span><small>${speaker}</small><span lang="trv" id="dialogue-line-${id}">${phrase}</span></span></div>`
+      ${placed ? `<div class="dialogue-line">${icon(portrait)}<span><small>${speaker}</small><span lang="trv" id="dialogue-line-${id}">${phrase}</span>${completed && chinese ? `<small>${chinese}</small>` : ''}</span></div>`
         : button(`${icon(portrait)}<span><small>${speaker}</small><span lang="trv" id="dialogue-line-${id}">${phrase}</span></span>`, 'teacher-dialogue', choice, 'match-choice')}
       <button type="button" class="match-listen" data-action="truku-audio" data-value="${id}" aria-label="播放這句" aria-describedby="dialogue-line-${id}">▶</button>
     </div>`;

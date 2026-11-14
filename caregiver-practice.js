@@ -1,9 +1,19 @@
-const caregiverTrukuPhrases = {};
+const caregiverTrukuPhrases = Object.fromEntries([
+  [1000064, 'Mtutuy ku da!', 71942],
+  [1000065, 'Iyah mkan uuqun mgrbu da!', 71942],
+  [1000070, 'Sai smgus gupun nhari!', 71943],
+  [1000071, 'Iq! Mkla ku da! Mha ku smgus gupun da.', 71943],
+  [1000072, 'Enduwa bi smgus gupun.', 71943],
+  [1036814, 'Ur ! Usa trima han.', 76085],
+  [1036931, 'Psai ska aba patas su nhari!', 76099],
+].map(([id, indigenous, lesson]) => [id, {
+  indigenous, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: `truku-release/${id}.flac`,
+}]));
 
 const caregiverPractice = {
   city: [
     { title: '聽米米說下一步', prompt: '爸爸來接米米，秀姨請你留意米米指著小卡說的那一句。聽她說完，找出這句對應哪個日常活動。', audio: 1000071, options: [['吃早餐', 13], ['刷牙', 23], ['收書包', 27]], order: [1], review: [1000071], result: '爸爸聽出她要去刷牙。秀姨請你把這句記進睡前交接小卡。' },
-    { title: '把睡前提醒排好', prompt: '秀姨請你和爸爸一起把兩張卡排好，讓家裡接著用。先排大人的刷牙提醒，再排米米的回話。', options: [1000071, 1000070], order: [1, 0], review: [1000070, 1000071], sequence: true, result: '爸爸把回話留給米米，等她說完才和她一起去拿牙刷。' },
+    { title: '把睡前提醒排好', prompt: '秀姨請你和爸爸一起把兩張卡排好，讓家裡接著用。先排大人的刷牙提醒，再排米米的回話。', options: [1000071, 1000070], order: [1, 0], review: [1000070, 1000071], translations: ['快點去刷牙！', '好啦！知道了啦！我要去刷牙了。'], sequence: true, result: '爸爸把回話留給米米，等她說完才和她一起去拿牙刷。' },
     { title: '洗澡前可以怎麼說', prompt: '小安的爸爸想把太魯閣語也用在洗澡前。挑一句洗澡時用得上的話，補進家裡的小卡。', options: [1000065, 1000072, 1036814], order: [2], review: [1036814], result: '爸爸把這句留在洗澡那一欄，回家後在熟悉的時刻再說給米米聽。' },
     { title: '兩張刷牙卡怎麼用', prompt: '先聽兩張卡。第一句提醒孩子快去刷牙，第二句提醒孩子好好刷。按這兩句在生活中出現的順序點選。', audio: 1000070, replyAudio: 1000072, audioLabels: ['▶ 聽第一句', '▶ 聽第二句'], options: [['刷牙時，提醒小安好好刷', 23], ['刷牙前，提醒小安快去刷', 24], ['刷完後，幫她收書包', 27]], order: [1, 0], review: [1000070, 1000072], result: '你們把兩種提醒放到不同時刻，爸爸一看就知道哪時候用哪句。' },
     { title: '交接時讓米米自己收', prompt: '小安拿著要帶回家的東西。聽家人的提醒，點出她要把東西放到哪裡。', audio: 1036931, options: [['餐桌', 13], ['洗手台', 23], ['書包', 27]], order: [2], review: [1036931], result: '爸爸沒有伸手代收，等小安自己把東西放進書包。' },
@@ -11,7 +21,7 @@ const caregiverPractice = {
   ],
   home: [
     { title: '把奶奶的早餐招呼記下來', prompt: '奶奶來接米米，跟秀姨分享早上在家常說的一句。聽完，替這句選一個用語標籤。', audio: 1000065, options: [['把東西放進書包', 27], ['睡前刷牙', 23], ['招呼孩子過來吃早餐', 13]], order: [2], review: [1000065], result: '秀姨請你把早餐的情境記在小卡上，請奶奶聽過一次。' },
-    { title: '從起床到餐桌', prompt: '奶奶想保留早上常聽見的兩句。先排米米說起床了，再排家人招呼吃早餐。', options: [1000065, 1000064], order: [1, 0], review: [1000064, 1000065], sequence: true, result: '奶奶把兩張卡按家裡的作息排好。米米指著第一張說她也會。' },
+    { title: '從起床到餐桌', prompt: '奶奶想保留早上常聽見的兩句。先排米米說起床了，再排家人招呼吃早餐。', options: [1000065, 1000064], order: [1, 0], review: [1000064, 1000065], translations: ['我起床了！', '過來吃早餐了。'], sequence: true, result: '奶奶把兩張卡按家裡的作息排好。米米指著第一張說她也會。' },
     { title: '聽見洗澡的提醒', prompt: '小安的奶奶希望家裡和托育時都能聽到熟悉的太魯閣語。聽家人留的一句提醒，再選出用得上的場合。', audio: 1036814, options: [['準備洗澡', 23], ['坐下吃早餐', 13], ['收拾書包', 27]], order: [0], review: [1036814], result: '你把兩家的小卡對了一次，在洗澡欄旁留下家人原本的說法。' },
     { title: '排好刷牙對話', prompt: '家人想核對刷牙卡。請依情境排好大人提醒、孩子回應、大人叮嚀好好刷這三句。', options: [1000072, 1000071, 1000070], order: [2, 1, 0], review: [1000070, 1000071, 1000072], sequence: true, result: '奶奶聽見小安平常會怎麼回。這一輪她也留了一點時間，沒搶著接第三句。' },
     { title: '等小安自己收書包', prompt: '奶奶把書包放到小安拿得到的地方。選一句請她把手上的東西放進書包。', options: [1000065, 1036931, 1036814], order: [1], review: [1036931], result: '小安把東西放進書包，又轉過來給奶奶看看。奶奶這次等她自己收完。' },

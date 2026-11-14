@@ -1,5 +1,5 @@
-const requestedMode = 'mandarin';
-const mandarinMode = true;
+let requestedMode = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('mode') : null;
+let mandarinMode = requestedMode === 'mandarin';
 
 const mandarinDialogue = {
   city: [

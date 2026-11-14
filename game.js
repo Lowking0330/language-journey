@@ -1,5 +1,5 @@
 const main = document.querySelector('#game');
-const key = mandarinMode ? 'language-journey-mandarin' : 'language-graduation-preview-1';
+let key = mandarinMode ? 'language-journey-mandarin' : 'language-graduation-preview-1';
 const turnsPerChapter = 2;
 const teachingSkill = 24;
 const teachingBreadth = 33;
@@ -170,7 +170,7 @@ function homeView() {
       ${game?.chapter > 0 ? button('童年對話・回奶奶家', 'truku') : ''}
       ${game?.chapter > 1 || game?.matchDone ? button('10–14 歲・問答連連看', 'school-match') : ''}
     </div>` : ''}
-    </section>`;
+    <a class="mode-link" href="./">← 選擇遊戲版本</a></section>`;
 }
 
 function setupView() {
@@ -622,6 +622,14 @@ const actions = {
 };
 
 document.addEventListener('click', event => {
+  const modeLink = event.target.closest('.mode-card, .mode-link');
+  if (modeLink && !event.defaultPrevented && event.button === 0 &&
+      !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+    event.preventDefault();
+    history.pushState(null, '', modeLink.href);
+    loadHomeMode();
+    return;
+  }
   const control = event.target.closest('[data-action]');
   if (!control) return;
   const action = control.dataset.action;
@@ -630,6 +638,21 @@ document.addEventListener('click', event => {
   actions[action](control.dataset.value);
 });
 
+function loadHomeMode() {
+  requestedMode = new URLSearchParams(location.search).get('mode');
+  mandarinMode = requestedMode === 'mandarin';
+  key = mandarinMode ? 'language-journey-mandarin' : 'language-graduation-preview-1';
+  const state = readSave();
+  ({ game, album, notebook } = state);
+  newAlbumBadges = new Set(state.newAlbumBadges);
+  route = game?.route ?? 'city';
+  nickname = game?.name ?? '';
+  avatar = game?.avatar ?? 'boy';
+  selectedMatch = null;
+  render('home');
+}
+
+if (typeof window.addEventListener === 'function') window.addEventListener('popstate', loadHomeMode);
 
 main.addEventListener('submit', event => {
   if (event.target.id !== 'profile') return;

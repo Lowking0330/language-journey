@@ -1,4 +1,61 @@
-const trukuPhrases = {};
+const trukuPhrases = {
+  "1": {
+    "indigenous": "Embiyax su hug?",
+    "chinese": "你好嗎？",
+    "source": "族語句型篇（國中）第16類〈問候語〉",
+    "url": "https://web.klokah.tw/extension/sp_junior/practice.php?d=33&c=16&i=12240",
+    "file": "truku-release/1.flac"
+  },
+  "4": {
+    "indigenous": "Swayay ta han!",
+    "chinese": "再見了！",
+    "source": "族語句型篇(高中版) 第16類〈道別語〉第4組",
+    "url": "https://web.klokah.tw/extension/sp_senior/practice.php?d=33&c=16&i=8044",
+    "file": "truku-release/4.flac"
+  },
+  "10": {
+    "indigenous": "Miyah ku da!",
+    "chinese": "我回來了！",
+    "source": "親子溝通族語〈放學回家・洗澡〉",
+    "url": "https://web.klokah.tw/text/read.php?tid=76085",
+    "file": "truku-release/10.flac"
+  },
+  "13": {
+    "indigenous": "Mhuway su balay.",
+    "chinese": "謝謝你。",
+    "source": "族語生活會話篇 第6課〈問路〉第10句",
+    "url": "https://web.klokah.tw/extension/con_practice/index.php?d=33&l=6&view=dialogue",
+    "file": "truku-release/13.flac"
+  },
+  "51": {
+    "indigenous": "Embiyax ku balay, isu ga?",
+    "chinese": "我很好，你呢？",
+    "source": "族語句型篇（國中）第16類〈問候語〉",
+    "url": "https://web.klokah.tw/extension/sp_junior/practice.php?d=33&c=16&i=12240",
+    "file": "truku-release/51.flac"
+  },
+  "52": {
+    "indigenous": "Mnksa ku.",
+    "chinese": "我走路來的。",
+    "source": "情境族語 S1 L8",
+    "url": "https://web.klokah.tw/text/read.php?tid=27390",
+    "file": "truku-release/52.flac"
+  },
+  "53": {
+    "indigenous": "Iq wah! seupu ta musa.",
+    "chinese": "好啊！我們一起去。",
+    "source": "情境族語 S2 L5",
+    "url": "https://web.klokah.tw/text/read.php?tid=36890",
+    "file": "truku-release/53.flac"
+  },
+  "54": {
+    "indigenous": "Iq wa, lita da!",
+    "chinese": "好啊！走吧！",
+    "source": "情境族語 S1 L7",
+    "url": "https://web.klokah.tw/text/read.php?tid=27389",
+    "file": "truku-release/54.flac"
+  }
+};
 
 const trukuStories = {
   city: {

@@ -4,9 +4,9 @@ const schoolMatchStories = {
     title: '相片裡的人是誰？',
     context: '你把童年帶來的相片放上共學班的桌子。阿予指著照片裡的人，你用太魯閣語介紹家人。',
     cards: [
-      { question: 101, answer: 102, icon: 27, clue: '阿予指著照片裡的叔叔。' },
-      { question: 103, answer: 104, icon: 12, clue: '你翻到姊姊那張照片。' },
-      { question: 105, answer: 106, icon: 27, clue: '弟弟也在合照裡。' },
+      { question: 101, answer: 102, icon: 27, clue: '阿予指著照片裡的叔叔。', meaning: ['那個男生是誰？', '他是我叔叔。'] },
+      { question: 103, answer: 104, icon: 12, clue: '你翻到姊姊那張照片。', meaning: ['那個女生是誰？', '她是我姊姊。'] },
+      { question: 105, answer: 106, icon: 27, clue: '弟弟也在合照裡。', meaning: ['那個小孩是誰？', '他是我弟弟。'] },
     ],
     ending: '你和阿予把三張照片排在一起，下次共學換你問、他來介紹。',
   },
@@ -15,15 +15,33 @@ const schoolMatchStories = {
     title: '把路線圖走一遍',
     context: '你和阿青帶著長輩畫的路線圖出門。經過菜園和學校時，試著用太魯閣語接話。',
     cards: [
-      { question: 111, answer: 112, icon: 26, clue: '阿青在岔路口問你。' },
-      { question: 113, answer: 114, icon: 14, clue: '到了菜園，阿青問你剛才把工具放在哪。' },
-      { question: 115, answer: 116, icon: 20, clue: '要回去時，阿青指著地圖上的郵局。' },
+      { question: 111, answer: 112, icon: 26, clue: '阿青在岔路口問你。', meaning: ['你要去哪裡？', '我要去菜園裡種菜。'] },
+      { question: 113, answer: 114, icon: 14, clue: '到了菜園，阿青問你剛才把工具放在哪。', meaning: ['你放在哪裡呢？', '放在犁耙旁邊。'] },
+      { question: 115, answer: 116, icon: 20, clue: '要回去時，阿青指著地圖上的郵局。', meaning: ['郵局離學校近嗎？', '很近，走路就會到。'] },
     ],
     ending: '你們在圖上補了菜園和郵局，再沿著熟悉的路回到學校。',
   },
 };
 
-const schoolTrukuPhrases = {};
+const schoolTrukuPhrases = Object.fromEntries([
+  [101, 'Ima ka snaw gaga?', '情境族語 S2 L3'],
+  [102, 'Hiya o swayi tama mu.', '情境族語 S2 L3'],
+  [103, 'Ima ka kuyuh gaga?', '情境族語 S2 L3'],
+  [104, 'Hiya o qbsuran mu kuyuh.', '情境族語 S2 L3'],
+  [105, 'Ima ka laqi gaga?', '情境族語 S2 L3'],
+  [106, 'Hiya o swayi mu snaw.', '情境族語 S2 L3'],
+  [111, 'Mha su inu?', '情境族語 S1 L12'],
+  [112, 'Mha ku hmaan pajiq hiya mhuma pajiq.', '情境族語 S1 L12'],
+  [113, 'Gaga su psaun inu?', '情境族語 S1 L12'],
+  [114, 'Gaga psaan kiyig qraq susu sudu hiya.', '情境族語 S1 L12'],
+  [115, 'Dalih ptasan ka saan smku pila hug?', '情境族語 S2 L8'],
+  [116, 'Dalih bi, mksa do dhuq da.', '情境族語 S2 L8'],
+  [121, 'Mseupu su tghuy ima ka isu?', '情境族語 S1 L3'],
+  [122, 'Ga inu ka ptasan?', '族語短文 S1 L8〈情境句型〉'],
+].map(([id, indigenous, source]) => {
+  const lesson = id <= 106 ? 36884 : id <= 114 ? 27394 : id <= 116 ? 36899 : id === 121 ? 27385 : 35515;
+  return [id, { indigenous, source, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: `truku-release/${id}.flac` }];
+}));
 
 let selectedMatch = null;
 let schoolMatchPractice;

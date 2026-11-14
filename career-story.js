@@ -1,5 +1,16 @@
 const careerStageNames = ['初入職場', '獨立帶領', '把接力棒交出去'];
-const careerFinalPhrase = {};
+const careerFinalPhrase = {
+  indigenous: 'Sqrasun misu balay. Kmbiyax ta kana.',
+  file: 'truku-release/ending.flac',
+};
+const careerTitles = {
+  teaching: '族語老師',
+  outreach: '語推人員',
+  preschool: '族語教保員',
+  caregiver: '一般型族語保母',
+  adult: '族語講師',
+  research: '語言學研究與教學',
+};
 
 function careerProgress(stage) {
   const names = game.direction === 'outreach' ? ['訪談與採集', '家庭訪視與翻譯', '校對與回交']

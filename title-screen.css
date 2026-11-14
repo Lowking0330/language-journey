@@ -18,6 +18,10 @@
 .cover-title::before {
   background: linear-gradient(180deg, transparent 33%, #12372a41 49%, #102f27dc 72%, #0a2420 100%);
 }
+.cover-bilingual .cover-art {
+  background-image: url('art-hero-bilingual.webp'), url('journey.webp');
+  background-position: center 46%, center;
+}
 .cover-mandarin .cover-art {
   background-image: url('art-hero-mandarin.webp'), url('journey.webp');
   background-position: center 78%, center;
