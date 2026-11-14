@@ -1,0 +1,256 @@
+[data-screen="home"] {
+  background: radial-gradient(ellipse at 50% 26%, #f6d98b56, transparent 62%),
+    linear-gradient(#d8e9d5, #f9ebce 60%, #e5ecd9);
+}
+.cover-title.scenery:first-child {
+  height: clamp(256px, 84vw, 425px);
+  border: 1px solid #aa874a;
+  background: #123a32;
+  box-shadow: 0 4px #34594b70, 0 11px 23px #15362d38;
+}
+.cover-art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url('art-hero.webp') center 39% / cover, url('journey.webp') center / cover;
+  transform-origin: 50% 38%;
+}
+.cover-title::before {
+  background: linear-gradient(180deg, transparent 33%, #12372a41 49%, #102f27dc 72%, #0a2420 100%);
+}
+.cover-mandarin .cover-art {
+  background-image: url('art-hero-mandarin.webp'), url('journey.webp');
+  background-position: center 78%, center;
+}
+.cover-bilingual .cover-wordmark {
+  font-family: Georgia, "Noto Serif TC", serif;
+  font-size: clamp(2rem, 9vw, 3.75rem);
+  gap: .22em;
+}
+.cover-title::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #fff2c763;
+  border-radius: 17px;
+  pointer-events: none;
+}
+.cover-identity { padding: 0 13px 18px; }
+.cover-identity h1 { gap: 5px; }
+.cover-wordmark { color: #fff3c7; text-shadow: 0 2px #8a5426, 0 4px #16271b, 0 9px 19px #18231cbb; }
+.cover-no { position: relative; overflow: hidden; }
+.cover-no::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  background: linear-gradient(115deg, transparent 32%, #fff9caaf 49%, transparent 67%);
+  transform: translateX(-112%);
+}
+.cover-age { color: #f3e9ce; }
+.cover-backup { right: 11px; bottom: 10px; min-height: 38px; background: linear-gradient(#fff6d2, #f6deb0); }
+.cover-motes { position: absolute; inset: 0; pointer-events: none; }
+.cover-motes i {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size, 4px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff1a3;
+  box-shadow: 0 0 10px 2px #ffd464a0;
+  opacity: .48;
+}
+.cover-motes i:nth-child(1) { --x: 11%; --y: 56%; --delay: .3s; }
+.cover-motes i:nth-child(2) { --x: 29%; --y: 45%; --delay: .95s; --size: 3px; }
+.cover-motes i:nth-child(3) { --x: 69%; --y: 53%; --delay: .1s; }
+.cover-motes i:nth-child(4) { --x: 87%; --y: 39%; --delay: 1.4s; --size: 3px; }
+.cover-motes i:nth-child(5) { --x: 93%; --y: 63%; --delay: .65s; --size: 5px; }
+.cover-motion {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 11px;
+  right: 11px;
+  width: 39px;
+  min-height: 39px;
+  padding: 0;
+  border: 1px solid #fff0b3b3;
+  border-radius: 50%;
+  background: #13382de8;
+  color: #fff2c4;
+  box-shadow: 0 2px 6px #12291d68;
+}
+.cover-motion span {
+  width: 10px;
+  height: 12px;
+  border-inline: 3px solid currentColor;
+}
+.cover-motion[aria-pressed="true"] span {
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-left: 10px solid currentColor;
+  border-right: 0;
+}
+.cover-wildlife {
+  display: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.cover-wildlife > span { position: absolute; left: 0; top: 0; opacity: 0; }
+.cover-bird {
+  --bird-scale: 1;
+  width: clamp(19px, 6vw, 28px);
+  height: 12px;
+  color: #302e27;
+  filter: drop-shadow(0 1px 1px #fff4b68c);
+}
+.cover-bird-small { --bird-scale: .73; }
+.cover-bird i, .cover-butterfly i { display: block; width: 100%; height: 100%; }
+.cover-bird i::before, .cover-bird i::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  width: 55%;
+  height: 66%;
+  border-top: 2px solid currentColor;
+  border-radius: 80% 85% 0 0;
+}
+.cover-bird i::before { left: 0; transform-origin: right bottom; }
+.cover-bird i::after { right: 0; transform-origin: left bottom; }
+.cover-butterfly {
+  width: clamp(23px, 7vw, 31px);
+  aspect-ratio: 1;
+  perspective: 50px;
+  filter: drop-shadow(0 2px 2px #221c26a0);
+}
+.cover-butterfly i::before, .cover-butterfly i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 48%;
+  height: 72%;
+  border: 1px solid #5d332b;
+  background: radial-gradient(ellipse at 35% 25%, #fff5b8 0 14%, transparent 16%),
+    linear-gradient(140deg, #fadb77, #eea452 57%, #b65531);
+}
+.cover-butterfly i::before { left: 3%; border-radius: 72% 58% 14% 93%; transform-origin: right center; }
+.cover-butterfly i::after { right: 3%; border-radius: 58% 72% 93% 14%; transform-origin: left center; }
+.mode-card {
+  position: relative;
+  isolation: isolate;
+  --card-rim: #a87437;
+  min-height: 150px;
+  gap: 2px;
+  background: radial-gradient(ellipse at 50% 17%, #fffdf1, transparent 58%), linear-gradient(155deg, #fff0c5, #eac282);
+  box-shadow: inset 0 2px #fffce0, inset 0 0 0 4px #fff6da75, 0 4px var(--card-rim), 0 10px 17px #634c3033;
+}
+.mode-card.mode-bilingual {
+  --card-rim: #4d806e;
+  background: radial-gradient(ellipse at 50% 17%, #fbfff2, transparent 58%), linear-gradient(155deg, #e7f5df, #a9d3bd);
+}
+.mode-card .icon { width: 62px; height: 62px; box-shadow: 0 4px 10px #25403430; }
+.mandarin-entry {
+  background: radial-gradient(ellipse at 25% 0, #fff9dc, transparent 67%), #faf0d8;
+  border-color: #bd995e;
+  box-shadow: inset 0 0 0 3px #fff8e3bd, 0 3px #a874375e, 0 8px 16px #634c3026;
+}
+.mandarin-entry h2 { display: flex; align-items: center; gap: 10px; }
+.mandarin-entry h2 .icon { width: 38px; height: 38px; }
+.mode-enter {
+  position: absolute;
+  inset: auto 8px 8px auto;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+  opacity: .66;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .mode-card:hover { translate: 0 -3px; }
+  .mode-card:active { translate: 0 3px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cover-motion { display: grid; place-items: center; }
+  .cover-wildlife { display: block; }
+  .cover-art { animation: cover-camera 2s cubic-bezier(.17,.7,.25,1), cover-breathe 13s 2s ease-in-out infinite; }
+  .cover-wordmark { animation: cover-reveal .62s .05s cubic-bezier(.18,.75,.25,1) backwards; }
+  .cover-bilingual .cover-wordmark > span { animation: cover-word-hop 5.8s 1s ease-in-out infinite; }
+  .cover-bilingual .cover-wordmark > span:nth-child(2) { animation-delay: 1.13s; }
+  .cover-bilingual .cover-wordmark > span:nth-child(3) { animation-delay: 1.26s; }
+  .cover-subtitle { animation: cover-reveal .54s .23s ease-out backwards; }
+  .cover-no::after { animation: cover-glint 8s .62s ease-out infinite; }
+  .cover-motes i { animation: cover-drift 4s var(--delay) ease-in-out infinite both; }
+  .cover-bird { animation: cover-bird-flight 12s linear infinite; }
+  .cover-bird-small { animation-delay: 1.4s; }
+  .cover-bird i::before { animation: cover-bird-left .65s ease-in-out infinite alternate; }
+  .cover-bird i::after { animation: cover-bird-right .65s ease-in-out infinite alternate; }
+  .cover-butterfly { animation: cover-butterfly-flight 9s ease-in-out infinite; }
+  .cover-mandarin .cover-butterfly { animation-name: cover-butterfly-from-left; }
+  .cover-butterfly i::before { animation: cover-wing-left .27s ease-in-out infinite alternate; }
+  .cover-butterfly i::after { animation: cover-wing-right .27s ease-in-out infinite alternate; }
+  .mode-card { animation: cover-reveal .52s .18s ease-out backwards, cover-card-sway 8s 1.9s ease-in-out infinite; }
+  .mode-card.mode-bilingual { animation-delay: .27s, 5.9s; }
+  .mandarin-entry { animation: cover-reveal .52s .18s ease-out backwards; }
+  .mandarin-entry h2 .icon { animation: cover-card-sway 8s 1.9s ease-in-out infinite; }
+  .mode-card:is(:focus-visible, :active) { animation: none; }
+  [data-cover-paused="true"] :is(.cover-art, .cover-wordmark, .cover-subtitle, .cover-motes i, .cover-wildlife span, .mode-card, .mandarin-entry, .mandarin-entry h2 .icon),
+  [data-cover-paused="true"] .cover-no::after,
+  [data-cover-paused="true"] .cover-bilingual .cover-wordmark > span,
+  [data-cover-paused="true"] .cover-wildlife i::before,
+  [data-cover-paused="true"] .cover-wildlife i::after { animation: none; }
+  [data-cover-paused="true"] .cover-bird { left: 28%; top: 17%; opacity: .85; }
+  [data-cover-paused="true"] .cover-bird-small { left: 24%; top: 20%; transform: scale(.73); }
+  [data-cover-paused="true"] .cover-butterfly { left: 83%; top: 43%; opacity: .95; }
+  [data-cover-paused="true"] .cover-mandarin .cover-butterfly { left: 12%; }
+}
+@keyframes cover-camera { from { transform: scale(1.12) translateY(2%); } to { transform: scale(1); } }
+@keyframes cover-breathe { 50% { transform: scale(1.055); } }
+@keyframes cover-reveal { from { opacity: .24; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes cover-word-hop {
+  0%, 13%, 100% { transform: translateY(0); }
+  5.5% { transform: translateY(-7px); }
+  10% { transform: translateY(1px); }
+}
+@keyframes cover-glint { 18%, 100% { transform: translateX(112%); } }
+@keyframes cover-card-sway {
+  0%, 22%, 100% { transform: perspective(600px) rotateY(0) rotateZ(0); }
+  7% { transform: perspective(600px) rotateY(-4deg) rotateZ(-1deg); }
+  15% { transform: perspective(600px) rotateY(4deg) rotateZ(1deg); }
+}
+@keyframes cover-bird-flight {
+  0% { left: -8%; top: 25%; opacity: 0; transform: scale(var(--bird-scale)) rotate(-9deg); }
+  10% { opacity: .9; }
+  34% { top: 11%; }
+  60% { top: 19%; }
+  80% { opacity: .9; }
+  92%, 100% { left: 106%; top: 6%; opacity: 0; transform: scale(var(--bird-scale)) rotate(7deg); }
+}
+@keyframes cover-bird-left { from { transform: rotate(9deg); } to { transform: rotate(-22deg); } }
+@keyframes cover-bird-right { from { transform: rotate(-9deg); } to { transform: rotate(22deg); } }
+@keyframes cover-butterfly-flight {
+  0%, 100% { left: 82%; top: 56%; opacity: .92; transform: rotate(-17deg); }
+  18% { left: 76%; top: 46%; transform: rotate(-30deg); }
+  41% { left: 90%; top: 34%; transform: rotate(19deg) scale(.8); }
+  67% { left: 86%; top: 46%; transform: rotate(-9deg); }
+  86% { left: 91%; top: 64%; transform: rotate(13deg); }
+}
+@keyframes cover-wing-left { from { transform: rotate(-18deg) rotateY(0); } to { transform: rotate(-12deg) rotateY(66deg); } }
+@keyframes cover-butterfly-from-left {
+  0%, 100% { left: -8%; top: 56%; opacity: 0; transform: rotate(17deg); }
+  18% { left: 15%; top: 46%; opacity: .92; transform: rotate(30deg); }
+  41% { left: 6%; top: 32%; opacity: .92; transform: rotate(-19deg) scale(.8); }
+  67% { left: 20%; top: 43%; opacity: .92; transform: rotate(9deg); }
+  86% { left: 8%; top: 58%; opacity: .92; transform: rotate(-13deg); }
+}
+@keyframes cover-wing-right { from { transform: rotate(18deg) rotateY(0); } to { transform: rotate(12deg) rotateY(-66deg); } }
+@keyframes cover-drift {
+  0%, 100% { opacity: .40; transform: translateY(0); }
+  60% { opacity: .92; transform: translateY(-17px); }
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7d38b">
+  <title>族語の夢：語你成長｜華語版</title>
+  <meta name="description" content="從都會或原鄉出發，在日常對話中成長，體驗六種職涯。">
+  <meta property="og:title" content="族語の夢：語你成長｜華語版">
+  <meta property="og:description" content="從都會或原鄉出發，在日常對話中成長，體驗六種職涯。">
+  <meta property="og:image" content="https://lowking0330.github.io/language-journey/art-hero-mandarin.webp">
+  <link rel="stylesheet" href="game.css">
+  <link rel="stylesheet" href="polish.css?v=19">
+  <script defer src="story.js?v=2"></script>
+  <script defer src="sound.js?v=4"></script>
+  <script defer src="observation.js?v=4"></script>
+  <script defer src="outreach.js?v=3"></script>
+  <script defer src="careers.js?v=6"></script>
+  <script defer src="epilogue.js?v=10"></script>
+  <script defer src="career-story.js?v=18"></script>
+  <script defer src="matching.js?v=9"></script>
+  <script defer src="teacher-practice.js?v=15"></script>
+  <script defer src="outreach-practice.js?v=2"></script>
+  <script defer src="preschool-practice.js"></script>
+  <script defer src="caregiver-practice.js?v=3"></script>
+  <script defer src="lecturer-practice.js?v=2"></script>
+  <script defer src="research-practice.js"></script>
+  <script defer src="truku.js?v=17"></script>
+  <script defer src="round-practice.js?v=8"></script>
+  <script defer src="mandarin.js?v=9"></script>
+  <script defer src="mandarin-full.js?v=1"></script>
+  <script defer src="save-backup.js?v=2"></script>
+  <link rel="stylesheet" href="career-map.css?v=1">
+  <link rel="stylesheet" href="title-screen.css?v=6">
+  <script defer src="career-map.js?v=1"></script>
+  <script defer src="game.js?v=33"></script>
+</head>
+<body>
+  <div class="cabinet">
+    <header>
+      <button type="button" class="brand" data-action="home">族語の夢：語你成長</button>
+      <div class="toolbar">
+        <button type="button" data-action="album" id="album">圖鑑 0／24</button>
+        <button type="button" data-action="music" id="music" aria-pressed="true" aria-label="背景音樂" title="背景音樂">♫</button>
+        <button type="button" data-action="sound" id="sound" aria-pressed="true" aria-label="音效" title="音效">♪</button>
+      </div>
+    </header>
+    <main id="game"></main>
+    <div id="notebook-notice" class="notebook-notice" role="status" aria-atomic="true"></div>
+    <dialog id="save-backup" class="panel save-backup" aria-labelledby="backup-title">
+      <h2 id="backup-title">存檔管理</h2>
+      <p id="backup-scope"></p>
+      <label for="backup-mode">備份版本</label>
+      <select id="backup-mode"><option value="bilingual">雙語版（太魯閣語＋華語）</option><option value="mandarin">華語版</option></select>
+      <div class="actions">
+        <button type="button" id="backup-download" class="primary">匯出存檔</button>
+        <button type="button" id="backup-select">選擇存檔</button>
+        <input type="file" id="backup-file" accept=".json,application/json" hidden>
+      </div>
+      <p id="backup-status" role="status"></p>
+      <div class="actions">
+        <button type="button" id="backup-apply" hidden class="primary">確認匯入</button>
+        <form method="dialog"><button type="submit">關閉</button></form>
+      </div>
+    </dialog>
+    <footer class="game-footer">
+      <span>本遊戲由 ChatGPT Codex 全程開發。</span>
+      <span id="save-note">進度儲存在此瀏覽器</span>
+    </footer>
+  </div>
+</body>
+</html>

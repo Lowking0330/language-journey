@@ -1,0 +1,73 @@
+.relay-album, .relay-invite {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.relay-album h2 { margin-bottom: 6px; }
+.relay-invites, .relay-detail { display: grid; gap: 9px; }
+.relay-invite { min-width: 0; background: #fff6da; text-align: start; }
+.relay-invite .icon { width: 44px; height: 44px; }
+.relay-invite small { display: block; color: #425c45; }
+
+.relay-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 10;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid #90b4a9;
+  border-radius: 22px;
+  background: repeating-radial-gradient(ellipse at 46% 48%, transparent 0 22px, #fff3 23px 24px, transparent 25px 44px),
+    linear-gradient(145deg, #def2e9, #98cac4);
+  box-shadow: inset 0 0 0 4px #fffc, 0 4px #39675c33;
+}
+.relay-island { position: absolute; inset: 0; width: 100%; height: 100%; }
+.relay-coast { fill: url(#relay-land); stroke: #f9fff0; stroke-width: 3; filter: drop-shadow(2px 3px 3px #2b675850); }
+.relay-terrain { fill: none; stroke: #507b56; stroke-width: 9; stroke-linecap: round; opacity: .19; }
+.relay-road { fill: none; stroke: #345857; stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; opacity: .55; }
+.relay-road.is-lit { stroke: #a35112; stroke-width: 3.6; stroke-dasharray: none; opacity: 1; }
+.relay-pin, .relay-start { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; }
+.relay-pin {
+  display: grid;
+  place-items: center;
+  width: clamp(44px, 13vw, 62px);
+  aspect-ratio: 1;
+  padding: 2px;
+  border-radius: 16px;
+  border: 1px solid #657d68;
+  background: #f6f7e8;
+  box-shadow: 0 3px #52716a70;
+  z-index: 1;
+}
+.relay-pin:active:not(:disabled) { translate: -50% calc(-50% + 2px); }
+.relay-pin .icon { width: 100%; height: auto; aspect-ratio: 1; border-radius: 12px; filter: grayscale(.82); }
+.relay-pin.is-lit { border-color: #a76a25; background: #ffdb78; box-shadow: 0 0 0 3px #fff4ae, 0 5px #9b611b75; }
+.relay-pin.is-lit .icon { filter: none; }
+.relay-pin[aria-pressed="true"] { outline: 3px solid #184c43; outline-offset: 3px; z-index: 3; }
+.relay-pin b { position: absolute; right: -4px; top: -5px; border-radius: 50%; width: 19px; color: #fff; background: #245944; font-size: .78rem; }
+.relay-start { display: grid; justify-items: center; gap: 3px; color: #21564f; font-size: .75rem; font-weight: 850; }
+.relay-start .icon { width: 34px; height: 34px; border-radius: 10px; }
+.relay-start.is-active .icon { outline: 2px solid #367569; outline-offset: 1px; }
+.relay-start span:last-child { background: #f5fff1; padding: 1px 6px; border-radius: 9px; white-space: nowrap; }
+.relay-detail details { color: #244f45; }
+.relay-detail summary { cursor: pointer; font-weight: 800; min-height: 34px; }
+.relay-detail details p + p { margin-top: 8px; }
+.relay-finale {
+  position: absolute;
+  bottom: 8px;
+  right: 11px;
+  padding: 5px 12px;
+  border-radius: 12px;
+  background: #fff1ae;
+  color: #624218;
+  font-weight: 900;
+}
+.has-milestone .relay-pin.is-lit { animation: relay-pin-light .85s ease-out; }
+.has-milestone .relay-road.is-lit { animation: relay-road-light .9s ease-out; }
+.has-milestone .relay-finale { animation: relay-finale-in .45s .6s ease-out both; }
+@keyframes relay-pin-light { 45% { box-shadow: 0 0 0 7px #fff6ab, 0 0 24px 9px #ffd463; } }
+@keyframes relay-road-light { 45% { stroke: #fff3a8; stroke-width: 6; } }
+@keyframes relay-finale-in { from { opacity: 0; transform: translateY(7px); } }
+@media (prefers-reduced-motion: reduce) {
+  .has-milestone .relay-pin.is-lit, .has-milestone .relay-road.is-lit, .has-milestone .relay-finale { animation: none; }
+}
