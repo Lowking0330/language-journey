@@ -258,3 +258,14 @@
   0%, 100% { opacity: .40; transform: translateY(0); }
   60% { opacity: .92; transform: translateY(-17px); }
 }
+
+.footer-credits p { margin: 0; }
+.home-credits { display: none; }
+[data-screen="home"] ~ .game-footer {
+  gap: 6px 16px;
+  padding-block-start: 8px;
+  font-size: .8rem;
+  line-height: 1.65;
+}
+[data-screen="home"] ~ .game-footer .home-credits { display: block; }
+[data-screen="home"] ~ .game-footer #save-note { margin-inline-start: auto; }
