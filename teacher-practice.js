@@ -4,7 +4,7 @@ const teacherTrukuPhrases = Object.fromEntries([
   [453748, "Embiyax su, mtgsa!", 27383],
   [453749, "Tluung!", 27383],
   [453751, "Mkla su qmbahang ka kari mu hug?", 27383],
-  [453752, "Mtgsa,ini ku kla.rngaw pxal duri hug?", 27383],
+  [453752, "Mtgsa, ini ku kla. Rngaw pxal duri hug?", 27383],
   [453754, "Qita hini, purug knan spug ha.", null],
   [453765, "Siyuki ta ssrus su hug?", 27383],
   [453882, "Smhungi ku madas hndayu da.", 27387],

@@ -49,11 +49,11 @@ const trukuPhrases = {
     "file": "truku-release/53.flac"
   },
   "54": {
-    "indigenous": "Iq o, lita da.",
+    "indigenous": "Iq, lita da.",
     "chinese": "好啊！走吧！",
     "source": "情境族語 S1 L7",
     "url": "https://web.klokah.tw/text/read.php?tid=27389",
-    "file": "truku-release/54-v3.flac"
+    "file": "truku-release/54-v4.flac"
   }
 };
 
