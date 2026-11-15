@@ -1,6 +1,6 @@
 const teacherTrukuPhrases = Object.fromEntries([
   [453746, "Embiyax namu kana? prajing ta da!", 27383],
-  [453747, "Hiyug! thmuku!", 27383],
+  [453747, "Hiyug! Thmuku!", 27383],
   [453748, "Embiyax su, mtgsa!", 27383],
   [453749, "Tluung!", 27383],
   [453751, "Mkla su qmbahang ka kari mu hug?", 27383],
@@ -13,7 +13,7 @@ const teacherTrukuPhrases = Object.fromEntries([
   indigenous,
   ...(lesson ? {
     url: `https://web.klokah.tw/text/read.php?tid=${lesson}`,
-    file: `truku-release/${id}.flac`,
+    file: id === 453747 ? 'truku-release/453747-v2.flac' : `truku-release/${id}.flac`,
   } : { chinese: '請看這裡，跟著我一起唸。', file: 'truku-release/453754.flac' }),
 }]));
 
