@@ -8,7 +8,7 @@ const researchTrukuPhrases = Object.fromEntries([
   [892924, 'Tminun o kndsan nami, ptlutut ku kndsan.', 63618],
   [552810, 'Dalih bi ka hnthyaqan pyaan tdruy ni ptasan hug?', 35515],
 ].map(([id, indigenous, lesson]) => [id, {
-  indigenous, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: `truku-release/${id}.flac`,
+  indigenous, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: id === 892923 ? 'truku-release/892923-v2.flac' : `truku-release/${id}.flac`,
 }]));
 
 const researchPractice = {
