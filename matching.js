@@ -40,7 +40,7 @@ const schoolTrukuPhrases = Object.fromEntries([
   [122, 'Ga inu ka ptasan?', '族語短文 S1 L8〈情境句型〉'],
 ].map(([id, indigenous, source]) => {
   const lesson = id <= 106 ? 36884 : id <= 114 ? 27394 : id <= 116 ? 36899 : id === 121 ? 27385 : 35515;
-  return [id, { indigenous, source, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: `truku-release/${id}.flac` }];
+  return [id, { indigenous, source, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: [116, 122].includes(id) ? `truku-release/${id}-v2.flac` : `truku-release/${id}.flac` }];
 }));
 
 let selectedMatch = null;
