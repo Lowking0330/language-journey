@@ -133,6 +133,26 @@ function resumeProgress() {
   return `${age}・第 ${game.turn + 1} 回合`;
 }
 
+const recordedVisits = new Set();
+
+function recordVisit(page) {
+  if (location.origin !== 'https://lowking0330.github.io' ||
+      !location.pathname.startsWith('/language-journey/')) return;
+  const storageKey = `language-journey-visit:${page}`;
+  if (recordedVisits.has(page)) return;
+  try {
+    if (sessionStorage.getItem(storageKey)) return;
+    sessionStorage.setItem(storageKey, '1');
+  } catch {
+    // The in-memory check also covers browsers with storage disabled.
+  }
+  recordedVisits.add(page);
+  fetch(`https://hits.sh/lowking0330.github.io/language-journey/${page}.svg`, {
+    mode: 'no-cors', credentials: 'omit', referrerPolicy: 'no-referrer',
+    cache: 'no-store', keepalive: true,
+  }).catch(() => {});
+}
+
 function homeView() {
   const bilingualCover = requestedMode === 'bilingual';
   const coverEdition = bilingualCover ? ' cover-bilingual' : mandarinMode ? ' cover-mandarin' : '';
@@ -154,6 +174,7 @@ function homeView() {
     </div>
     ${button('存檔管理', 'backup', '', 'cover-backup')}</div>`;
   if (!mandarinMode && requestedMode !== 'bilingual') {
+    recordVisit('home');
     return `${cover}
       <nav class="mode-grid" aria-label="選擇遊戲版本">
         <a class="mode-card mode-mandarin" href="?mode=mandarin">${icon(8)}<strong>華語版</strong><small>全華語</small><span class="mode-enter" aria-hidden="true">›</span></a>
@@ -539,8 +560,12 @@ const actions = {
     game = { route, avatar, name: nickname || '小禾', chapter: 0, turn: 0, stats: [...paths[route].initial], feedback: null };
     save();
     render('play');
+    recordVisit(mandarinMode ? 'mandarin' : 'bilingual');
   },
-  resume: () => render(game.career ? 'career' : game.epilogueChoice !== undefined ? 'epilogue' : game.ending ? 'ending' : 'play'),
+  resume: () => {
+    render(game.career ? 'career' : game.epilogueChoice !== undefined ? 'epilogue' : game.ending ? 'ending' : 'play');
+    recordVisit(mandarinMode ? 'mandarin' : 'bilingual');
+  },
   act: value => act(Number(value)),
   'choose-memory': id => {
     if (!game.memoryPending || game.memory || !Object.hasOwn(turningPoints[game.route].options, id)) return;
