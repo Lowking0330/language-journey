@@ -8,7 +8,7 @@ const preschoolTrukuPhrases = Object.fromEntries([
   [1036857, 'Suyang bi!', 76089],
 ].map(([id, indigenous, lesson]) => [id, {
   indigenous, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`,
-  file: [1036835, 1036857].includes(id) ? `truku-release/${id}-v2.flac` : `truku-release/${id}.flac`,
+  file: [1036835, 1036857, 1036918].includes(id) ? `truku-release/${id}-v2.flac` : `truku-release/${id}.flac`,
 }]));
 
 const preschoolPractice = {

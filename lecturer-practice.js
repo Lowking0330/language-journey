@@ -12,7 +12,7 @@ const lecturerTrukuPhrases = Object.fromEntries([
   indigenous,
   ...(lesson ? { url: lesson === 16 ? 'https://web.klokah.tw/extension/con_practice/index.php?d=33&l=16&view=dialogue'
     : `https://web.klokah.tw/text/read.php?tid=${lesson}` } : {}),
-  file: `truku-release/${id}.flac`,
+  file: id === 583009 ? 'truku-release/583009-v2.flac' : `truku-release/${id}.flac`,
 }]));
 
 const lecturerPractice = {

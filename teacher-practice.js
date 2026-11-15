@@ -13,7 +13,7 @@ const teacherTrukuPhrases = Object.fromEntries([
   indigenous,
   ...(lesson ? {
     url: `https://web.klokah.tw/text/read.php?tid=${lesson}`,
-    file: [453747, 453748].includes(id) ? `truku-release/${id}-v2.flac` : `truku-release/${id}.flac`,
+    file: [453747, 453748, 453752].includes(id) ? `truku-release/${id}-v2.flac` : `truku-release/${id}.flac`,
   } : { chinese: '請看這裡，跟著我一起唸。', file: 'truku-release/453754.flac' }),
 }]));
 

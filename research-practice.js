@@ -2,13 +2,13 @@ const researchTrukuPhrases = Object.fromEntries([
   [583010, 'Tduwa ku meangal kari mangal ka sunan hug? kmspatas mu.', 36902],
   [583011, 'Iq, tduwa.', 36902],
   [583016, 'Mhuway su balay, sruwa su psiling knan.', 36902],
-  [892921, 'Mkla su bi tminun, Ima ka cmisa sunan.', 63618],
+  [892921, 'Mkla su bi tminun, ima ka cmisa sunan.', 63618],
   [892922, 'Payi mu, hiya ka mkla bi tminun alang nami.', 63618],
   [892923, 'Ma su kmsluhay tminun?', 63618],
   [892924, 'Tminun o kndsan nami, ptlutut ku kndsan.', 63618],
   [552810, 'Dalih bi ka hnthyaqan pyaan tdruy ni ptasan hug?', 35515],
 ].map(([id, indigenous, lesson]) => [id, {
-  indigenous, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: id === 892923 ? 'truku-release/892923-v2.flac' : `truku-release/${id}.flac`,
+  indigenous, url: `https://web.klokah.tw/text/read.php?tid=${lesson}`, file: [583011, 892922, 892923, 892924].includes(id) ? `truku-release/${id}-v2.flac` : `truku-release/${id}.flac`,
 }]));
 
 const researchPractice = {
